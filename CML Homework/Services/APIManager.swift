@@ -13,11 +13,14 @@ protocol APIManagerProtocol {
 }
 
 typealias LoginResult = Result<LoginToken, LoginManagerError>
-typealias GetCurrentUserResult = Result<UserInfo, LoginManagerError>
+typealias CurrentUserResult = Result<UserInfo, LoginManagerError>
+typealias AllPropertiesResult = Result<UserProperties, LoginManagerError>
 
 class APIManager: APIManagerProtocol {
     
-    var barrerToken: LoginToken?
+    static var barrerToken: LoginToken?
+//    var accountId: Int?
+    static var accountId: Int? = 36
     
     
     private let baseURL: String = "https://re-next-qa.cmlteam.com"
@@ -26,6 +29,12 @@ class APIManager: APIManagerProtocol {
         case login = "/auth/login"
         case getCurrentUser = "/auth/current-user"
         case getAllProperties = "/api/property/list?page=0&pageSize=10&accountId="
+    }
+    
+    enum APIResultType {
+        case loginResult
+        case currentUserResult
+        case allPropertiesResult
     }
   
     
@@ -42,7 +51,10 @@ class APIManager: APIManagerProtocol {
                     switch response.result {
                         case .success:
                             if let data = response.value {
-                                completion(self.parseResult(data))
+                                let parsedData = self.parseResult(data, toType: LoginToken.self)
+                                APIManager.barrerToken = try? parsedData.get()
+                                print(parsedData)
+                                completion(parsedData)
                             }
                         case .failure:
                             completion(.failure(.notAvailable))
@@ -50,53 +62,75 @@ class APIManager: APIManagerProtocol {
                    }
     }
     
-    func performGetCurrentUser(completion: @escaping (GetCurrentUserResult) -> Void) {
+    func performGetCurrentUser(completion: @escaping (CurrentUserResult) -> Void) {
     
         var headers: HTTPHeaders? = nil
-        if let tokenType = barrerToken?.tokenType, let accessToken = barrerToken?.accessToken {
+        if let tokenType = APIManager.barrerToken?.tokenType, let accessToken = APIManager.barrerToken?.accessToken {
             headers = ["Authorization": tokenType + " " + accessToken]
-        }
-        
-        AF.request(baseURL + ApiRoute.getCurrentUser.rawValue,
-                   method: .get,
-                   parameters: nil,
-                   encoding: URLEncoding.default,
-                   headers: headers,
-                   interceptor: nil,
-                   requestModifier: nil)
-            .validate(statusCode: 200...204)
-            .responseJSON {response in
-                    switch response.result {
-                        case .success:
-                            if let data = response.value {
-                                completion(self.parseUserResult(data))
+            
+            AF.request(baseURL + ApiRoute.getCurrentUser.rawValue,
+                       method: .get,
+                       parameters: nil,
+                       encoding: URLEncoding.default,
+                       headers: headers,
+                       interceptor: nil,
+                       requestModifier: nil)
+                .validate(statusCode: 200...204)
+                .responseJSON {response in
+                        switch response.result {
+                            case .success:
+                                if let data = response.value {
+                                    let parsedData = self.parseResult(data, toType: UserInfo.self)
+                                    APIManager.accountId = try? parsedData.get().accountId
+                                    print(data)
+                                    completion(.success(try! parsedData.get()))
+                                }
+                            case .failure:
+                                completion(.failure(.notAvailable))
                             }
-                        case .failure:
-                            completion(.failure(.notAvailable))
-                        }
-                   }
-    }
-    
-    func parseResult(_ data: Any?) -> LoginResult {
-        guard let data = data else { return .failure(LoginManagerError.dataIsEmptyError) }
-        
-        do {
-            let decoder = JSONDecoder()
-            let jsonData = try JSONSerialization.data(withJSONObject: data)
-            let decodedData = try decoder.decode(LoginToken.self, from: jsonData)
-            return .success(decodedData)
-        } catch {
-            return .failure(LoginManagerError.parsingError(error: error))
+                       }
         }
     }
     
-    func parseUserResult(_ data: Any?) -> GetCurrentUserResult {
+    func performGetAllProperties(completion: @escaping (AllPropertiesResult) -> Void) {
+    
+        var headers: HTTPHeaders? = nil
+        if let tokenType = APIManager.barrerToken?.tokenType, let accessToken = APIManager.barrerToken?.accessToken {
+            headers = ["Authorization": tokenType + " " + accessToken]
+            
+            if let accountId = APIManager.accountId {
+                AF.request(baseURL + ApiRoute.getAllProperties.rawValue + String(accountId),
+                           method: .get,
+                           parameters: nil,
+                           encoding: URLEncoding.default,
+                           headers: headers,
+                           interceptor: nil,
+                           requestModifier: nil)
+                    .validate(statusCode: 200...204)
+                    .responseJSON {response in
+                            switch response.result {
+                                case .success:
+                                    if let data = response.value {
+                                        print(data)
+                                        completion(self.parseResult(data, toType: UserProperties.self))
+                                    }
+                                case .failure:
+                                    completion(.failure(.notAvailable))
+                                }
+                           }
+            }
+        }
+        
+    }
+    
+    func parseResult<T: Decodable>(_ data: Any?, toType type: T.Type) -> Result<T, LoginManagerError> {
+        
         guard let data = data else { return .failure(LoginManagerError.dataIsEmptyError) }
         
         do {
             let decoder = JSONDecoder()
             let jsonData = try JSONSerialization.data(withJSONObject: data)
-            let decodedData = try decoder.decode(UserInfo.self, from: jsonData)
+            let decodedData = try decoder.decode(T.self, from: jsonData)
             return .success(decodedData)
         } catch {
             return .failure(LoginManagerError.parsingError(error: error))

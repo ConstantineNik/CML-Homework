@@ -111,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="1031.8840579710145" y="118.52678571428571"/>
         </scene>
-        <!--View Controller-->
+        <!--User Property List View Controller-->
         <scene sceneID="X7G-Pf-VB3">
             <objects>
-                <viewController id="Cqh-s3-b9i" sceneMemberID="viewController">
+                <viewController id="Cqh-s3-b9i" customClass="UserPropertyListViewController" customModule="CML_Homework" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pdG-D7-q5s">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +124,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="propertyCell" id="R9t-T5-pOB">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PropertyCell" id="R9t-T5-pOB">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R9t-T5-pOB" id="tEt-cq-Zoh">
@@ -140,6 +140,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Snt-mD-2uK"/>
                     <connections>
+                        <outlet property="tableView" destination="lGu-C2-8hL" id="Xh5-3l-l9B"/>
                         <segue destination="g04-0Q-nfx" kind="show" identifier="goToProperty" id="KYe-42-2QY"/>
                     </connections>
                 </viewController>

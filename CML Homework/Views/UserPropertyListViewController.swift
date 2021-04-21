@@ -9,10 +9,36 @@ import UIKit
 
 class UserPropertyListViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    private var viewModel: UserPropertyListViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "PropertyCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        tableView.delegate = self
+        
+        viewModel = UserPropertyListViewModel()
+        updateTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let navBar = navigationController?.navigationBar else {
+            fatalError("Navigation controllerdoes not exist")
+        }
+        
+        title = "User Properties"
+        navBar.backgroundColor = .darkGray
+    }
+    
+    func updateTableView() {
+        self.viewModel.updateViewData = {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
 
@@ -26,4 +52,26 @@ class UserPropertyListViewController: UIViewController {
     }
     */
 
+}
+
+extension UserPropertyListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.userProperties?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let personProperty = viewModel.userProperties?[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! PropertyCell
+        
+        cell.name.text = personProperty?.name
+
+        return cell
+    }
+}
+
+extension UserPropertyListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToProperty", sender: self)
+    }
 }

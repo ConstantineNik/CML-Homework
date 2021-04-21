@@ -21,6 +21,12 @@
 		8096C0262630530D00220E81 /* LoginManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C0252630530D00220E81 /* LoginManagerError.swift */; };
 		8096C02A26305F9000220E81 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C02926305F9000220E81 /* UserInfo.swift */; };
 		8096C03126306CC400220E81 /* UserPropertyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C03026306CC400220E81 /* UserPropertyListViewController.swift */; };
+		8096C0342630706200220E81 /* UserPropertyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C0332630706200220E81 /* UserPropertyListViewModel.swift */; };
+		8096C037263071A000220E81 /* UserProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C036263071A000220E81 /* UserProperty.swift */; };
+		8096C03B263077B000220E81 /* PropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C039263077B000220E81 /* PropertyCell.swift */; };
+		8096C03C263077B000220E81 /* PropertyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8096C03A263077B000220E81 /* PropertyCell.xib */; };
+		8096C03F26307BD900220E81 /* UserProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C03E26307BD900220E81 /* UserProperties.swift */; };
+		8096C04226308E5000220E81 /* UserPropertyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C04126308E5000220E81 /* UserPropertyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +47,12 @@
 		8096C0252630530D00220E81 /* LoginManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManagerError.swift; sourceTree = "<group>"; };
 		8096C02926305F9000220E81 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		8096C03026306CC400220E81 /* UserPropertyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPropertyListViewController.swift; sourceTree = "<group>"; };
+		8096C0332630706200220E81 /* UserPropertyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPropertyListViewModel.swift; sourceTree = "<group>"; };
+		8096C036263071A000220E81 /* UserProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProperty.swift; sourceTree = "<group>"; };
+		8096C039263077B000220E81 /* PropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCell.swift; sourceTree = "<group>"; };
+		8096C03A263077B000220E81 /* PropertyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropertyCell.xib; sourceTree = "<group>"; };
+		8096C03E26307BD900220E81 /* UserProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProperties.swift; sourceTree = "<group>"; };
+		8096C04126308E5000220E81 /* UserPropertyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPropertyViewModel.swift; sourceTree = "<group>"; };
 		BB5232A5563BC7F80935635B /* Pods-CML Homework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CML Homework.debug.xcconfig"; path = "Target Support Files/Pods-CML Homework/Pods-CML Homework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +126,8 @@
 				8096C01D26304C7C00220E81 /* LoginForm.swift */,
 				8096C0202630512C00220E81 /* LoginToken.swift */,
 				8096C02926305F9000220E81 /* UserInfo.swift */,
+				8096C036263071A000220E81 /* UserProperty.swift */,
+				8096C03E26307BD900220E81 /* UserProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -123,6 +137,8 @@
 			children = (
 				8096BFFD263027D500220E81 /* LoginViewController.swift */,
 				8096C03026306CC400220E81 /* UserPropertyListViewController.swift */,
+				8096C039263077B000220E81 /* PropertyCell.swift */,
+				8096C03A263077B000220E81 /* PropertyCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -131,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				8096C0172630442500220E81 /* LoginViewModel.swift */,
+				8096C0332630706200220E81 /* UserPropertyListViewModel.swift */,
+				8096C04126308E5000220E81 /* UserPropertyViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -221,6 +239,7 @@
 			files = (
 				8096C006263027DC00220E81 /* LaunchScreen.storyboard in Resources */,
 				8096C003263027DC00220E81 /* Assets.xcassets in Resources */,
+				8096C03C263077B000220E81 /* PropertyCell.xib in Resources */,
 				8096C001263027D500220E81 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,9 +294,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8096C0262630530D00220E81 /* LoginManagerError.swift in Sources */,
+				8096C037263071A000220E81 /* UserProperty.swift in Sources */,
+				8096C0342630706200220E81 /* UserPropertyListViewModel.swift in Sources */,
+				8096C03B263077B000220E81 /* PropertyCell.swift in Sources */,
 				8096C0182630442500220E81 /* LoginViewModel.swift in Sources */,
 				8096C01E26304C7C00220E81 /* LoginForm.swift in Sources */,
+				8096C04226308E5000220E81 /* UserPropertyViewModel.swift in Sources */,
 				8096BFFE263027D500220E81 /* LoginViewController.swift in Sources */,
+				8096C03F26307BD900220E81 /* UserProperties.swift in Sources */,
 				8096C01B2630479800220E81 /* APIManager.swift in Sources */,
 				8096BFFA263027D500220E81 /* AppDelegate.swift in Sources */,
 				8096BFFC263027D500220E81 /* SceneDelegate.swift in Sources */,
