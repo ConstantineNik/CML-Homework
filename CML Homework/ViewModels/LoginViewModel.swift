@@ -8,11 +8,28 @@
 import Foundation
 
 protocol LoginViewModelProtocol {
-    func logIn()
+    func logIn(completion: @escaping () -> Void)
 }
 
 class LoginViewModel: NSObject, LoginViewModelProtocol {
-    func logIn() {
+    
+    var apiManager: APIManager
+    
+    override init() {
+        self.apiManager = APIManager()
+        
+        super.init()
     }
     
+    func logIn(completion: @escaping () -> Void) {
+        apiManager.performLogIn { [weak self] (result) in
+            
+            switch result {
+            case .success:
+                completion()
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+    }
 }

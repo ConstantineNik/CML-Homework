@@ -31,13 +31,6 @@ class APIManager: APIManagerProtocol {
         case getAllProperties = "/api/property/list?page=0&pageSize=10&accountId="
     }
     
-    enum APIResultType {
-        case loginResult
-        case currentUserResult
-        case allPropertiesResult
-    }
-  
-    
     func performLogIn(completion: @escaping (LoginResult) -> Void) {
         AF.request(baseURL + ApiRoute.login.rawValue,
                    method: .post,
@@ -53,7 +46,6 @@ class APIManager: APIManagerProtocol {
                             if let data = response.value {
                                 let parsedData = self.parseResult(data, toType: LoginToken.self)
                                 APIManager.barrerToken = try? parsedData.get()
-                                print(parsedData)
                                 completion(parsedData)
                             }
                         case .failure:
@@ -82,7 +74,6 @@ class APIManager: APIManagerProtocol {
                                 if let data = response.value {
                                     let parsedData = self.parseResult(data, toType: UserInfo.self)
                                     APIManager.accountId = try? parsedData.get().accountId
-                                    print(data)
                                     completion(.success(try! parsedData.get()))
                                 }
                             case .failure:
@@ -111,7 +102,6 @@ class APIManager: APIManagerProtocol {
                             switch response.result {
                                 case .success:
                                     if let data = response.value {
-                                        print(data)
                                         completion(self.parseResult(data, toType: UserProperties.self))
                                     }
                                 case .failure:

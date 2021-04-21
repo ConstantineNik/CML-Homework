@@ -14,22 +14,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     
+    private var viewModel: LoginViewModelProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.viewModel = LoginViewModel()
     }
 
     @IBAction func logInButtonPressed(_ sender: UIButton) {
-        let apiManager: APIManager = APIManager()
-        apiManager.performLogIn { [weak self] (result) in
-            
-            switch result {
-            case .success:
-                self?.goToPropertyListView()
-            case .failure(let error):
-                print("Error: \(error)")
-            }
-        }
+        viewModel.logIn { self.goToPropertyListView() }
     }
     
     func goToPropertyListView() {
