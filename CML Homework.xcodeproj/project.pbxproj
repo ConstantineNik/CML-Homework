@@ -27,6 +27,7 @@
 		8096C03C263077B000220E81 /* PropertyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8096C03A263077B000220E81 /* PropertyCell.xib */; };
 		8096C03F26307BD900220E81 /* UserProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C03E26307BD900220E81 /* UserProperties.swift */; };
 		8096C04226308E5000220E81 /* UserPropertyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C04126308E5000220E81 /* UserPropertyViewModel.swift */; };
+		8096C0462630B61300220E81 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C0452630B61300220E81 /* TextFieldValidation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		8096C03A263077B000220E81 /* PropertyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropertyCell.xib; sourceTree = "<group>"; };
 		8096C03E26307BD900220E81 /* UserProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProperties.swift; sourceTree = "<group>"; };
 		8096C04126308E5000220E81 /* UserPropertyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPropertyViewModel.swift; sourceTree = "<group>"; };
+		8096C0452630B61300220E81 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		BB5232A5563BC7F80935635B /* Pods-CML Homework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CML Homework.debug.xcconfig"; path = "Target Support Files/Pods-CML Homework/Pods-CML Homework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 		8096C01126302AC400220E81 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8096C0442630B5D700220E81 /* FieldValidation */,
 				8096C024263052E000220E81 /* Errors */,
 				8096C01A2630479800220E81 /* APIManager.swift */,
 			);
@@ -167,6 +170,14 @@
 				8096C0252630530D00220E81 /* LoginManagerError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		8096C0442630B5D700220E81 /* FieldValidation */ = {
+			isa = PBXGroup;
+			children = (
+				8096C0452630B61300220E81 /* TextFieldValidation.swift */,
+			);
+			path = FieldValidation;
 			sourceTree = "<group>";
 		};
 		8244DDA49900F44A15A13F35 /* Pods */ = {
@@ -301,6 +312,7 @@
 				8096C01E26304C7C00220E81 /* LoginForm.swift in Sources */,
 				8096C04226308E5000220E81 /* UserPropertyViewModel.swift in Sources */,
 				8096BFFE263027D500220E81 /* LoginViewController.swift in Sources */,
+				8096C0462630B61300220E81 /* TextFieldValidation.swift in Sources */,
 				8096C03F26307BD900220E81 /* UserProperties.swift in Sources */,
 				8096C01B2630479800220E81 /* APIManager.swift in Sources */,
 				8096BFFA263027D500220E81 /* AppDelegate.swift in Sources */,

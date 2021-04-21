@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol APIManagerProtocol {
-    func performLogIn(completion: @escaping (LoginResult) -> Void)
+    func performLogIn(email: String, password: String, completion: @escaping (LoginResult) -> Void)
 }
 
 typealias LoginResult = Result<LoginToken, LoginManagerError>
@@ -31,10 +31,11 @@ class APIManager: APIManagerProtocol {
         case getAllProperties = "/api/property/list?page=0&pageSize=10&accountId="
     }
     
-    func performLogIn(completion: @escaping (LoginResult) -> Void) {
+    func performLogIn(email: String, password: String, completion: @escaping (LoginResult) -> Void) {
         AF.request(baseURL + ApiRoute.login.rawValue,
                    method: .post,
-                   parameters: Login(email: "test111@test.com", password: "test1234"),
+//                   parameters: Login(email: "test111@test.com", password: "test1234"),
+                   parameters: Login(email: email, password: password),
                    encoder: JSONParameterEncoder.default,
                    headers: nil,
                    interceptor: nil,
