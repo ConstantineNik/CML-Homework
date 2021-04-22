@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class UserPropertyViewModel: NSObject {
+    
+    func transformStructureTo() {
+    }
+}

@@ -30,6 +30,9 @@
 		8096C0462630B61300220E81 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C0452630B61300220E81 /* TextFieldValidation.swift */; };
 		8096C04A2630BF6200220E81 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C0492630BF6200220E81 /* LoginError.swift */; };
 		8096C04D263176BC00220E81 /* PropertyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C04C263176BC00220E81 /* PropertyDetailsViewController.swift */; };
+		8096C05026317B2800220E81 /* PropertyDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C04F26317B2800220E81 /* PropertyDetailsViewModel.swift */; };
+		8096C05526318F2F00220E81 /* PropDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C05326318F2F00220E81 /* PropDetailsCell.swift */; };
+		8096C05626318F2F00220E81 /* PropDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8096C05426318F2F00220E81 /* PropDetailsCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,9 @@
 		8096C0452630B61300220E81 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		8096C0492630BF6200220E81 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		8096C04C263176BC00220E81 /* PropertyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDetailsViewController.swift; sourceTree = "<group>"; };
+		8096C04F26317B2800220E81 /* PropertyDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDetailsViewModel.swift; sourceTree = "<group>"; };
+		8096C05326318F2F00220E81 /* PropDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropDetailsCell.swift; sourceTree = "<group>"; };
+		8096C05426318F2F00220E81 /* PropDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropDetailsCell.xib; sourceTree = "<group>"; };
 		BB5232A5563BC7F80935635B /* Pods-CML Homework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CML Homework.debug.xcconfig"; path = "Target Support Files/Pods-CML Homework/Pods-CML Homework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +149,7 @@
 		8096C01326302AFB00220E81 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8096C05226318EFB00220E81 /* PropertyDetailCell */,
 				8096BFFD263027D500220E81 /* LoginViewController.swift */,
 				8096C03026306CC400220E81 /* UserPropertyListViewController.swift */,
 				8096C039263077B000220E81 /* PropertyCell.swift */,
@@ -158,6 +165,7 @@
 				8096C0172630442500220E81 /* LoginViewModel.swift */,
 				8096C0332630706200220E81 /* UserPropertyListViewModel.swift */,
 				8096C04126308E5000220E81 /* UserPropertyViewModel.swift */,
+				8096C04F26317B2800220E81 /* PropertyDetailsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -184,6 +192,15 @@
 				8096C0452630B61300220E81 /* TextFieldValidation.swift */,
 			);
 			path = FieldValidation;
+			sourceTree = "<group>";
+		};
+		8096C05226318EFB00220E81 /* PropertyDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				8096C05326318F2F00220E81 /* PropDetailsCell.swift */,
+				8096C05426318F2F00220E81 /* PropDetailsCell.xib */,
+			);
+			path = PropertyDetailCell;
 			sourceTree = "<group>";
 		};
 		8244DDA49900F44A15A13F35 /* Pods */ = {
@@ -254,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8096C05626318F2F00220E81 /* PropDetailsCell.xib in Resources */,
 				8096C006263027DC00220E81 /* LaunchScreen.storyboard in Resources */,
 				8096C003263027DC00220E81 /* Assets.xcassets in Resources */,
 				8096C03C263077B000220E81 /* PropertyCell.xib in Resources */,
@@ -317,6 +335,7 @@
 				8096C03B263077B000220E81 /* PropertyCell.swift in Sources */,
 				8096C0182630442500220E81 /* LoginViewModel.swift in Sources */,
 				8096C01E26304C7C00220E81 /* LoginForm.swift in Sources */,
+				8096C05526318F2F00220E81 /* PropDetailsCell.swift in Sources */,
 				8096C04226308E5000220E81 /* UserPropertyViewModel.swift in Sources */,
 				8096C04A2630BF6200220E81 /* LoginError.swift in Sources */,
 				8096BFFE263027D500220E81 /* LoginViewController.swift in Sources */,
@@ -328,6 +347,7 @@
 				8096C02A26305F9000220E81 /* UserInfo.swift in Sources */,
 				8096C03126306CC400220E81 /* UserPropertyListViewController.swift in Sources */,
 				8096C0212630512C00220E81 /* LoginToken.swift in Sources */,
+				8096C05026317B2800220E81 /* PropertyDetailsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

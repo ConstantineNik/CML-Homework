@@ -25,11 +25,25 @@ struct UserProperty: Codable {
     let account: String?
     let imageS3Array: [ImageS3]?
     let code: String?
+    
+    func getStructAsDictionary() -> ([String], [String: String]) {
+        var dictionary: [String: String] = [:]
+        dictionary["Type"] = self.type
+        dictionary["ZIP"] = self.zipCode
+        dictionary["Street"] = self.street
+        dictionary["Suite No."] = self.suiteNumber
+        dictionary["District"] = self.district
+        dictionary["House No."] = self.houseNumber
+        dictionary["Code"] = self.code
+        
+        let keys = [String] (dictionary.keys)
+        return (keys, dictionary)
+    }
 }
 
 struct Coordinates: Codable {
-    let lat: String?
-    let lng: String?
+    let lat: Double?
+    let lng: Double?
 }
 
 struct ImageS3: Codable {
