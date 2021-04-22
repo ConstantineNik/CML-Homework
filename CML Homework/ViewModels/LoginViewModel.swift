@@ -9,7 +9,6 @@ import Foundation
 
 protocol LoginViewModelProtocol {
     func logIn(email: String, password: String, completion: @escaping (LoginResult) -> Void)
-//    func textFieldValidation(email: String, password: String) -> Valid
 }
 
 class LoginViewModel: NSObject, LoginViewModelProtocol {
@@ -18,17 +17,11 @@ class LoginViewModel: NSObject, LoginViewModelProtocol {
     
     override init() {
         self.apiManager = APIManager()
-        
         super.init()
     }
     
-//    func textFieldValidation(email: String, password: String) -> Valid {
-//        return Validation.shared.validate(values: (ValidationType.email, email), (ValidationType.password, password))
-//    }
-    
     func logIn(email: String, password: String, completion: @escaping (LoginResult) -> Void) {
-        apiManager.performLogIn(email: email, password: password) { [weak self] (result) in
-            
+        apiManager.performLogIn(email: email, password: password) { (result) in
             completion(result)
         }
     }

@@ -11,6 +11,9 @@ protocol UserPropertyListViewModelProtocol {
     var updateUserInfo: (() -> ()) { get set }
     var updateViewData: (() -> ()) { get set }
     func fetchData()
+    func getCurrentUser()
+    var userInfo: UserInfo? { get set }
+    var userProperties: [UserProperty]? { get set }
 }
 
 class UserPropertyListViewModel: NSObject, UserPropertyListViewModelProtocol {
@@ -26,14 +29,13 @@ class UserPropertyListViewModel: NSObject, UserPropertyListViewModelProtocol {
         getCurrentUser()
     }
     
-    private(set) var userInfo: UserInfo? {
+    var userInfo: UserInfo? {
         didSet {
             self.updateUserInfo()
         }
     }
     
-    
-    private(set) var userProperties: [UserProperty]? {
+    var userProperties: [UserProperty]? {
         didSet {
             self.updateViewData()
         }
@@ -46,7 +48,7 @@ class UserPropertyListViewModel: NSObject, UserPropertyListViewModelProtocol {
                 self?.userInfo = user
                 self?.fetchData()
             case .failure(let error):
-                print("Error: \(error)")
+                fatalError("Error: \(error)")
             }
         }
     }
@@ -58,7 +60,7 @@ class UserPropertyListViewModel: NSObject, UserPropertyListViewModelProtocol {
             case .success(let props):
                 self?.userProperties = props.data
             case .failure(let error):
-                print("Error: \(error)")
+                fatalError("Error: \(error)")
             }
         }
     }

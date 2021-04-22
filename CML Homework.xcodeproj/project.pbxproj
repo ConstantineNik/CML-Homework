@@ -26,9 +26,6 @@
 		8096C03B263077B000220E81 /* PropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C039263077B000220E81 /* PropertyCell.swift */; };
 		8096C03C263077B000220E81 /* PropertyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8096C03A263077B000220E81 /* PropertyCell.xib */; };
 		8096C03F26307BD900220E81 /* UserProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C03E26307BD900220E81 /* UserProperties.swift */; };
-		8096C04226308E5000220E81 /* UserPropertyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C04126308E5000220E81 /* UserPropertyViewModel.swift */; };
-		8096C0462630B61300220E81 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C0452630B61300220E81 /* TextFieldValidation.swift */; };
-		8096C04A2630BF6200220E81 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C0492630BF6200220E81 /* LoginError.swift */; };
 		8096C04D263176BC00220E81 /* PropertyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C04C263176BC00220E81 /* PropertyDetailsViewController.swift */; };
 		8096C05026317B2800220E81 /* PropertyDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C04F26317B2800220E81 /* PropertyDetailsViewModel.swift */; };
 		8096C05526318F2F00220E81 /* PropDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096C05326318F2F00220E81 /* PropDetailsCell.swift */; };
@@ -58,13 +55,11 @@
 		8096C039263077B000220E81 /* PropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCell.swift; sourceTree = "<group>"; };
 		8096C03A263077B000220E81 /* PropertyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropertyCell.xib; sourceTree = "<group>"; };
 		8096C03E26307BD900220E81 /* UserProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProperties.swift; sourceTree = "<group>"; };
-		8096C04126308E5000220E81 /* UserPropertyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPropertyViewModel.swift; sourceTree = "<group>"; };
-		8096C0452630B61300220E81 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
-		8096C0492630BF6200220E81 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		8096C04C263176BC00220E81 /* PropertyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDetailsViewController.swift; sourceTree = "<group>"; };
 		8096C04F26317B2800220E81 /* PropertyDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDetailsViewModel.swift; sourceTree = "<group>"; };
 		8096C05326318F2F00220E81 /* PropDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropDetailsCell.swift; sourceTree = "<group>"; };
 		8096C05426318F2F00220E81 /* PropDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropDetailsCell.xib; sourceTree = "<group>"; };
+		8096C0592631A2AB00220E81 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BB5232A5563BC7F80935635B /* Pods-CML Homework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CML Homework.debug.xcconfig"; path = "Target Support Files/Pods-CML Homework/Pods-CML Homework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +86,7 @@
 		8096BFED263027D500220E81 = {
 			isa = PBXGroup;
 			children = (
+				8096C0592631A2AB00220E81 /* README.md */,
 				8096BFF8263027D500220E81 /* CML Homework */,
 				8096BFF7263027D500220E81 /* Products */,
 				8244DDA49900F44A15A13F35 /* Pods */,
@@ -126,9 +122,7 @@
 		8096C01126302AC400220E81 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8096C0442630B5D700220E81 /* FieldValidation */,
-				8096C024263052E000220E81 /* Errors */,
-				8096C01A2630479800220E81 /* APIManager.swift */,
+				8096C0622631ECE100220E81 /* APIManager */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -136,12 +130,10 @@
 		8096C01226302AE100220E81 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8096C01D26304C7C00220E81 /* LoginForm.swift */,
 				8096C0202630512C00220E81 /* LoginToken.swift */,
 				8096C02926305F9000220E81 /* UserInfo.swift */,
 				8096C036263071A000220E81 /* UserProperty.swift */,
 				8096C03E26307BD900220E81 /* UserProperties.swift */,
-				8096C0492630BF6200220E81 /* LoginError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,11 +141,9 @@
 		8096C01326302AFB00220E81 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8096C05226318EFB00220E81 /* PropertyDetailCell */,
+				8096C05C2631BD8700220E81 /* CustomCells */,
 				8096BFFD263027D500220E81 /* LoginViewController.swift */,
 				8096C03026306CC400220E81 /* UserPropertyListViewController.swift */,
-				8096C039263077B000220E81 /* PropertyCell.swift */,
-				8096C03A263077B000220E81 /* PropertyCell.xib */,
 				8096C04C263176BC00220E81 /* PropertyDetailsViewController.swift */,
 			);
 			path = Views;
@@ -164,7 +154,6 @@
 			children = (
 				8096C0172630442500220E81 /* LoginViewModel.swift */,
 				8096C0332630706200220E81 /* UserPropertyListViewModel.swift */,
-				8096C04126308E5000220E81 /* UserPropertyViewModel.swift */,
 				8096C04F26317B2800220E81 /* PropertyDetailsViewModel.swift */,
 			);
 			path = ViewModels;
@@ -186,14 +175,6 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
-		8096C0442630B5D700220E81 /* FieldValidation */ = {
-			isa = PBXGroup;
-			children = (
-				8096C0452630B61300220E81 /* TextFieldValidation.swift */,
-			);
-			path = FieldValidation;
-			sourceTree = "<group>";
-		};
 		8096C05226318EFB00220E81 /* PropertyDetailCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +182,42 @@
 				8096C05426318F2F00220E81 /* PropDetailsCell.xib */,
 			);
 			path = PropertyDetailCell;
+			sourceTree = "<group>";
+		};
+		8096C05B2631BD6400220E81 /* PropertyCell */ = {
+			isa = PBXGroup;
+			children = (
+				8096C039263077B000220E81 /* PropertyCell.swift */,
+				8096C03A263077B000220E81 /* PropertyCell.xib */,
+			);
+			path = PropertyCell;
+			sourceTree = "<group>";
+		};
+		8096C05C2631BD8700220E81 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				8096C05B2631BD6400220E81 /* PropertyCell */,
+				8096C05226318EFB00220E81 /* PropertyDetailCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		8096C0602631ECAE00220E81 /* RequestModels */ = {
+			isa = PBXGroup;
+			children = (
+				8096C01D26304C7C00220E81 /* LoginForm.swift */,
+			);
+			path = RequestModels;
+			sourceTree = "<group>";
+		};
+		8096C0622631ECE100220E81 /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				8096C024263052E000220E81 /* Errors */,
+				8096C0602631ECAE00220E81 /* RequestModels */,
+				8096C01A2630479800220E81 /* APIManager.swift */,
+			);
+			path = APIManager;
 			sourceTree = "<group>";
 		};
 		8244DDA49900F44A15A13F35 /* Pods */ = {
@@ -336,10 +353,7 @@
 				8096C0182630442500220E81 /* LoginViewModel.swift in Sources */,
 				8096C01E26304C7C00220E81 /* LoginForm.swift in Sources */,
 				8096C05526318F2F00220E81 /* PropDetailsCell.swift in Sources */,
-				8096C04226308E5000220E81 /* UserPropertyViewModel.swift in Sources */,
-				8096C04A2630BF6200220E81 /* LoginError.swift in Sources */,
 				8096BFFE263027D500220E81 /* LoginViewController.swift in Sources */,
-				8096C0462630B61300220E81 /* TextFieldValidation.swift in Sources */,
 				8096C03F26307BD900220E81 /* UserProperties.swift in Sources */,
 				8096C01B2630479800220E81 /* APIManager.swift in Sources */,
 				8096BFFA263027D500220E81 /* AppDelegate.swift in Sources */,

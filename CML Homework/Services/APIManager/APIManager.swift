@@ -33,8 +33,7 @@ class APIManager: APIManagerProtocol {
     func performLogIn(email: String, password: String, completion: @escaping (LoginResult) -> Void) {
         AF.request(baseURL + ApiRoute.login.rawValue,
                    method: .post,
-                   parameters: Login(email: "test111@test.com", password: "test1234"),
-//                   parameters: Login(email: email, password: password),
+                   parameters: Login(email: email, password: password),
                    encoder: JSONParameterEncoder.default,
                    headers: nil,
                    interceptor: nil,
@@ -46,10 +45,10 @@ class APIManager: APIManagerProtocol {
                             if let data = response.value {
                                 let parsedData = self.parseResult(data, toType: LoginToken.self)
                                 APIManager.barrerToken = try? parsedData.get()
-                                completion(parsedData)
+                                DispatchQueue.main.async { completion(parsedData) }
                             }
                         case .failure(let error):
-                            completion(.failure(.requestError(error: error)))
+                            DispatchQueue.main.async { completion(.failure(.requestError(error: error))) }
                         }
                    }
     }
@@ -74,10 +73,10 @@ class APIManager: APIManagerProtocol {
                                 if let data = response.value {
                                     let parsedData = self.parseResult(data, toType: UserInfo.self)
                                     APIManager.accountId = try? parsedData.get().accountId
-                                    completion(parsedData)
+                                    DispatchQueue.main.async { completion(parsedData) }
                                 }
                             case .failure:
-                                completion(.failure(.notAvailable))
+                                DispatchQueue.main.async { completion(.failure(.notAvailable)) }
                             }
                        }
         }
@@ -102,10 +101,10 @@ class APIManager: APIManagerProtocol {
                             switch response.result {
                                 case .success:
                                     if let data = response.value {
-                                        completion(self.parseResult(data, toType: UserProperties.self))
+                                        DispatchQueue.main.async { completion(self.parseResult(data, toType: UserProperties.self)) }
                                     }
                                 case .failure:
-                                    completion(.failure(.notAvailable))
+                                    DispatchQueue.main.async { completion(.failure(.notAvailable)) }
                                 }
                            }
             }

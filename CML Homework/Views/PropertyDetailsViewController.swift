@@ -16,7 +16,7 @@ class PropertyDetailsViewController: UIViewController {
     @IBOutlet weak var descriptionTitleLabel: UILabel!
     @IBOutlet weak var descriptionTextLabel: UITextView!
     
-    private var viewModel: UserPropertyViewModel!
+    private var viewModel: PropertyDetailsViewModelProtocol!
     
     var userProperty: UserProperty?
     var displayedDetails: ([String]?, [String: String])?
@@ -27,7 +27,7 @@ class PropertyDetailsViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "PropDetailsCell", bundle: nil), forCellReuseIdentifier: "ReusablePropCell")
         
-        viewModel = UserPropertyViewModel()
+        viewModel = PropertyDetailsViewModel()
         displayedDetails = userProperty?.getStructAsDictionary()
         
         if let lat = userProperty?.coordinates?.lat, let lng = userProperty?.coordinates?.lng {
@@ -47,17 +47,18 @@ class PropertyDetailsViewController: UIViewController {
         
         descriptionTitleLabel.text = "Description"
         
-        let htmlText = userProperty?.description?.data(using: .utf8)
-        let attributedString = try? NSAttributedString(
-            data: htmlText!,
-            options: [.documentType: NSAttributedString.DocumentType.html],
-            documentAttributes: nil)
-        descriptionTextLabel.attributedText = attributedString
+        if let descriptionText = userProperty?.description {
+            let attributedString = self.viewModel.parseHtmlToString(descriptionText)
+            DispatchQueue.main.async {
+                self.descriptionTextLabel.attributedText = attributedString
+            }
+        }
         
         navBar.backgroundColor = .darkGray
     }
 }
 
+//MARK: - UITableView Data Source
 extension PropertyDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayedDetails?.0?.count ?? 0
@@ -76,6 +77,7 @@ extension PropertyDetailsViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - MapView Location
 private extension MKMapView {
   func centerToLocation(
     _ location: CLLocation,

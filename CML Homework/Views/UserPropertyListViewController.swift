@@ -11,7 +11,7 @@ class UserPropertyListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var viewModel: UserPropertyListViewModel! 
+    private var viewModel: UserPropertyListViewModelProtocol! 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +47,9 @@ class UserPropertyListViewController: UIViewController {
         }
     }
     
-
+//MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+
         if segue.identifier == "goToProperty" {
             let destinationVC = segue.destination as! PropertyDetailsViewController
             destinationVC.userProperty = self.viewModel?.userProperties?[tableView.indexPathForSelectedRow!.row]
@@ -58,6 +58,7 @@ class UserPropertyListViewController: UIViewController {
 
 }
 
+//MARK: - UITableView Data Source
 extension UserPropertyListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.userProperties?.count ?? 0
@@ -74,6 +75,7 @@ extension UserPropertyListViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - UITableView Delegate Methods
 extension UserPropertyListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToProperty", sender: self)
