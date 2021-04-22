@@ -12,6 +12,7 @@
 + MVVM архитектура (патерн координатора MVVM-C не использовал, так как тут всего несколько экранов)
 + Все экраны размещены в Main.storyboard, переходы реализованы через segue
 + В папке Services находится APIManager, который руководит отправкой запросов и парсингом полученных ответов. Также внутри этого класа реализована обработка ошибок по респонсу, парсингу. LoginManagerError - вспомогательный клас с варианами ошибок, которые могут возникнуть при выполнении API запросов. В папке RequestModels расположена модель для пост запроса.
++ Для отправки запросов использовал Alamofire фреймворк.
 + В папке Models находятся модели для парсинга данных по респонсам от API. LoginToken - модель токена для использования его в авторизированных запросах. UserInfo - модель для ответа GET /auth/current-user. UserProperty - структура пропертей пользователя. UserProperties - модель для ответа GET /api/property/list?page=0&pageSize=10&accountId=${x}.
 + Views: LoginViewController - контроллер Show login form. UserPropertyListViewController - контроллер Show properties list. PropertyDetailsViewController - контроллер Show property’s page.
 + ViewModels: вью модели для размещения логики по каждому с вью контроллеров.
