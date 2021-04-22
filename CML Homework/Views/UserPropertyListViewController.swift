@@ -11,7 +11,7 @@ class UserPropertyListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var viewModel: UserPropertyListViewModel!
+    private var viewModel: UserPropertyListViewModel! 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,7 @@ class UserPropertyListViewController: UIViewController {
         tableView.delegate = self
         
         viewModel = UserPropertyListViewModel()
+        viewModel.updateUserInfo()
         updateTableView()
     }
     
@@ -29,7 +30,12 @@ class UserPropertyListViewController: UIViewController {
             fatalError("Navigation controllerdoes not exist")
         }
         
-        title = "User Properties"
+        self.viewModel.updateUserInfo = {
+            DispatchQueue.main.async {
+                self.title = "\(self.viewModel.userInfo?.firstName ?? "User") Properties"
+            }
+        }
+        
         navBar.backgroundColor = .darkGray
     }
     

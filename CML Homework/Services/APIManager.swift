@@ -19,8 +19,7 @@ typealias AllPropertiesResult = Result<UserProperties, LoginManagerError>
 class APIManager: APIManagerProtocol {
     
     static var barrerToken: LoginToken?
-//    var accountId: Int?
-    static var accountId: Int? = 36
+    static var accountId: Int?
     
     
     private let baseURL: String = "https://re-next-qa.cmlteam.com"
@@ -34,8 +33,8 @@ class APIManager: APIManagerProtocol {
     func performLogIn(email: String, password: String, completion: @escaping (LoginResult) -> Void) {
         AF.request(baseURL + ApiRoute.login.rawValue,
                    method: .post,
-//                   parameters: Login(email: "test111@test.com", password: "test1234"),
-                   parameters: Login(email: email, password: password),
+                   parameters: Login(email: "test111@test.com", password: "test1234"),
+//                   parameters: Login(email: email, password: password),
                    encoder: JSONParameterEncoder.default,
                    headers: nil,
                    interceptor: nil,
@@ -49,8 +48,8 @@ class APIManager: APIManagerProtocol {
                                 APIManager.barrerToken = try? parsedData.get()
                                 completion(parsedData)
                             }
-                        case .failure:
-                            completion(.failure(.notAvailable))
+                        case .failure(let error):
+                            completion(.failure(.requestError(error: error)))
                         }
                    }
     }
@@ -75,7 +74,7 @@ class APIManager: APIManagerProtocol {
                                 if let data = response.value {
                                     let parsedData = self.parseResult(data, toType: UserInfo.self)
                                     APIManager.accountId = try? parsedData.get().accountId
-                                    completion(.success(try! parsedData.get()))
+                                    completion(parsedData)
                                 }
                             case .failure:
                                 completion(.failure(.notAvailable))

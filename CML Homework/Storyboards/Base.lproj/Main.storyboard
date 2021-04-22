@@ -158,21 +158,54 @@
             </objects>
             <point key="canvasLocation" x="1811.594202898551" y="117.85714285714285"/>
         </scene>
-        <!--View Controller-->
+        <!--Property Details View Controller-->
         <scene sceneID="QL6-Pj-CE2">
             <objects>
-                <viewController id="g04-0Q-nfx" sceneMemberID="viewController">
+                <viewController id="g04-0Q-nfx" customClass="PropertyDetailsViewController" customModule="CML_Homework" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qge-hc-Z3p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="84P-bM-7pb">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GHc-hs-f6L">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="407"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Jzx-Oi-jsZ">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jzx-Oi-jsZ" id="QnK-fW-Xec">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xBT-6b-s3z">
+                                        <rect key="frame" x="0.0" y="407" width="375" height="216"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="216" id="iax-1d-S5f"/>
+                                        </constraints>
+                                    </mapView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="SeO-IK-gUw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="84P-bM-7pb" firstAttribute="top" secondItem="SeO-IK-gUw" secondAttribute="top" id="18r-ee-sj3"/>
+                            <constraint firstAttribute="bottom" secondItem="84P-bM-7pb" secondAttribute="bottom" id="5mM-VJ-FtF"/>
+                            <constraint firstItem="84P-bM-7pb" firstAttribute="leading" secondItem="SeO-IK-gUw" secondAttribute="leading" id="RMV-Td-VBF"/>
+                            <constraint firstItem="84P-bM-7pb" firstAttribute="trailing" secondItem="SeO-IK-gUw" secondAttribute="trailing" id="ZnX-22-onA"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tzD-RD-LXM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKV-Gy-MSp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="119"/>
+            <point key="canvasLocation" x="2580" y="118.29085457271366"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H3k-nu-2Nc">
